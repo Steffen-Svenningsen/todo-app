@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.sass';
+import moment from 'moment';
+import 'moment/locale/da';
 
 function App() {
-  var moment = require('moment'); // require
   moment.locale();
-  const date = moment().format('dddd - LL');
+  const date = moment().format('dddd [d.] D MMMM');
   return (
     <div className="App">
       <header>
