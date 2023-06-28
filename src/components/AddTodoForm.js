@@ -4,7 +4,7 @@ export default function AddTodoForm({
     onAddInputChange
   }) {
     return (
-      <form>
+      <form className="btn-form">
         <input
           name="todo"
           type="text"

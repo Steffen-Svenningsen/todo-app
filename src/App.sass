@@ -1,7 +1,44 @@
+$yellow: #FBD800
+$black: #252525
+$white: #fff
+$grey: #d9d9d9
+  
 .App
   padding: 1rem
+  box-sizing: border-box
   
   header
     display: flex
     align-items: center
     justify-content: space-between
+
+  main
+
+
+  .btn-form
+    position: fixed
+    bottom: 1rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: calc( 100% - 2rem )
+    background: $yellow
+    padding: 0.5rem
+    border-radius: 12px
+    box-sizing: border-box
+    left: 1rem
+
+    input
+      background: $white
+      border: none
+      padding: 0.5rem
+      border-radius: 8px
+      font-size: 1rem
+      outline: none
+
+    button
+      border: none
+      background: $white
+      padding: 0.5rem
+      border-radius: 8px
+      font-size: 1rem
