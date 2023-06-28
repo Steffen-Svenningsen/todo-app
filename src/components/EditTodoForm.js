@@ -5,7 +5,7 @@ export default function EditForm({
     onEditFormSubmit
   }) {
     return (
-      <form onSubmit={onEditFormSubmit}>
+      <form className="btn-form" onSubmit={onEditFormSubmit}>
         <input
           name="updateTodo"
           type="text"
