@@ -6,6 +6,7 @@ export default function AddTodoForm({
     return (
       <form className="btn-form">
         <input
+          className="add-todo-input-field"
           name="todo"
           type="text"
           placeholder="Tilføj en opgave"
