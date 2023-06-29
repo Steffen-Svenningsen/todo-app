@@ -3,9 +3,29 @@ $black: #252525
 $white: #fff
 $grey: #d9d9d9
   
+.light
+  background: $white
+  color: $black
+
+  #theme-toggle-btn
+    background-image: url("./images/moon.png") !important
+
+.dark
+  background: $black
+  color: $white
+
+  #theme-toggle-btn
+    background-image: url("./images/sun.png") !important
+
 .App
   padding: 1rem
   box-sizing: border-box
+
+  #theme-toggle-btn
+    height: 35px
+    width: 35px
+    background: transparent
+    border: none
   
   header
     display: flex

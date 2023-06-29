@@ -6,6 +6,7 @@ import TodoItem from './components/TodoItem';
 import AddTodoForm from './components/AddTodoForm';
 import EditTodoForm from './components/EditTodoForm';
 import LogoImg from './images/logo.png';
+import DarkMode from "./components/DarkMode";
 
 function App() {
   moment.locale();
@@ -80,9 +81,7 @@ function App() {
       <header>
         <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
         <p className='date'>{date}</p>
-        <div>
-          toggle
-        </div>
+        <DarkMode />
       </header>
       <main>
         <h1>Mine opgaver</h1>
