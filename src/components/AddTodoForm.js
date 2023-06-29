@@ -13,7 +13,7 @@ export default function AddTodoForm({
           value={todo}
           onChange={onAddInputChange}
         />
-        <button onClick={onAddFormSubmit}>Tilføj</button>
+        <button className="add-todo-btn" onClick={onAddFormSubmit}></button>
       </form>
     );
   }

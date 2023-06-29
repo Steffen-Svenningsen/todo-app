@@ -1,4 +1,5 @@
 $yellow: #FBD800
+$orange: #FFB158
 $black: #252525
 $white: #fff
 $grey: #d9d9d9
@@ -86,7 +87,7 @@ body
     justify-content: space-between
     align-items: center
     width: calc( 100% - 2rem )
-    background: $yellow
+    background: linear-gradient(115deg, $yellow 60%, $orange 100%)
     padding: 0.5rem
     border-radius: 12px
     box-sizing: border-box
@@ -109,3 +110,10 @@ body
       padding: 0.5rem
       border-radius: 8px
       font-size: 1rem
+
+    .add-todo-btn
+      height: 34px
+      width: 34px
+      background-image: url("./images/cross.png")
+      background-position: center
+      background-repeat: no-repeat
