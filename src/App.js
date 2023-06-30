@@ -45,18 +45,30 @@ function App() {
         ...todos,
         {
           id: todos.length + 1,
-          text: todo.trim()
+          text: todo.trim(),
+          deleted: false
         }
       ]);
     }
     setTodo("");
   }
 
-  function handleDeleteClick(id) {
+  /* function handleDeleteClick(id) {
     const removeItem = todos.filter((todo) => {
       return todo.id !== id;
     });
     setTodos(removeItem);
+  } */
+
+  function handleDeleteClick(id) {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, deleted: !todo.deleted }; // Toggle the 'deleted' flag
+      }
+      return todo;
+    });
+  
+    setTodos(updatedTodos);
   }
 
   function handleEditClick(todo) {

@@ -64,6 +64,9 @@ body
         line-height: 1.1
         gap: 4rem
 
+        .todo-done-title
+            text-decoration: line-through
+
         .btn-container
           display: flex
           align-items: center
@@ -79,6 +82,18 @@ body
           .change-btn
             width: 24px
             height: 24px
+
+          .delete-todo-btn
+            border-radius: 50px
+            width: 24px
+            height: 24px
+            border: 1px solid $black
+            transition: 0.2s
+
+          .todo-done-btn
+            background: url("./images/checked.png"), $yellow
+            background-position: center
+            background-repeat: no-repeat
 
   .btn-form
     position: fixed
