@@ -13,7 +13,7 @@ export default function EditForm({
           value={currentTodo.text}
           onChange={onEditInputChange}
         />
-        <button type="submit" onClick={onEditFormSubmit}>Gem</button>
+        <button className="save-btn" type="submit" onClick={onEditFormSubmit}>Gem</button>
       </form>
     );
   }
