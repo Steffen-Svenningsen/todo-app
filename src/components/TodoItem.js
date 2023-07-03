@@ -9,8 +9,8 @@ export default function TodoItem({
     onDeleteClick(todo.id);
   };
 
-  const btnClass = todo.deleted ? 'deleted' : 'todo-done-btn';
-  const titleClass = todo.deleted ? 'deleted' : 'todo-done-title';
+  const btnClass = todo.deleted ? 'todo-done-btn' : '';
+  const titleClass = todo.deleted ? 'todo-done-title' : '';
   
 
   return (
