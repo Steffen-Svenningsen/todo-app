@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './App.sass';
 import moment from 'moment';
 import 'moment/locale/da';
@@ -39,36 +40,45 @@ function App() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-
+  
     if (todo !== "") {
-      setTodos([
-        ...todos,
-        {
-          id: todos.length + 1,
-          text: todo.trim(),
-          deleted: false
-        }
-      ]);
+      const newTodo = {
+        id: uuidv4(),
+        text: todo.trim(),
+        deleted: false
+      };
+  
+      setTodos([newTodo, ...todos]); // Add the new todo at the beginning of the array
     }
     setTodo("");
   }
 
-  /* function handleDeleteClick(id) {
+  function handleDoubleClick(id) {
     const removeItem = todos.filter((todo) => {
       return todo.id !== id;
     });
     setTodos(removeItem);
-  } */
+  }
 
   function handleDeleteClick(id) {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, deleted: !todo.deleted }; // Toggle the 'deleted' flag
+        return { ...todo, deleted: !todo.deleted };
       }
       return todo;
     });
   
-    setTodos(updatedTodos);
+    const sortedTodos = updatedTodos.sort((a, b) => {
+      if (a.deleted && !b.deleted) {
+        return 1; // Move a to the bottom
+      }
+      if (!a.deleted && b.deleted) {
+        return -1; // Move b to the bottom
+      }
+      return 0; // Maintain the original order
+    });
+  
+    setTodos(sortedTodos);
   }
 
   function handleEditClick(todo) {
@@ -114,9 +124,11 @@ function App() {
         <ul className="todo-list">
           {todos.map((todo) => (
             <TodoItem
+              key={todo.id}
               todo={todo}
               onEditClick={handleEditClick}
               onDeleteClick={handleDeleteClick}
+              onDoubleClick={handleDoubleClick}
             />
           ))}
         </ul>
