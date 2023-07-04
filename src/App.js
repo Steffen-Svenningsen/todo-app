@@ -101,12 +101,14 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
-        <p className='date'>{date}</p>
-        <DarkMode />
+        <div className="header-main">
+          <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
+          <p className='date'>{date}</p>
+          <DarkMode />
+        </div>
+        <h1>Mine opgaver</h1>
       </header>
       <main>
-        <h1>Mine opgaver</h1>
         {isEditing ? (
         <EditTodoForm
           currentTodo={currentTodo}
