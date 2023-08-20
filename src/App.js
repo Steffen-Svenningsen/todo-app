@@ -8,7 +8,8 @@ import AddTodoForm from './components/AddTodoForm';
 import EditTodoForm from './components/EditTodoForm';
 import LogoImg from './images/logo.png';
 import DarkMode from "./components/DarkMode";
-import InfoIcon from "./images/info.png"
+import InfoIcon from "./images/info.png";
+import CloseBtn from "./images/close.png";
 
 function App() {
   moment.locale();
@@ -99,13 +100,19 @@ function App() {
     e.preventDefault();
     handleUpdateTodo(currentTodo.id, currentTodo);
   }
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleInfoScreen() {
+    setIsOpen((isOpen) => !isOpen);
+  }
   return (
-    <div className="App">
+    <div className={`App ${isOpen ? 'no-scroll' : ''}`}>
       <header>
         <div className="header-main">
           <div className="header-logo-btn-container">
             <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
-            <button>
+            <button onClick={toggleInfoScreen}>
               <img src={InfoIcon} width={24} height={24} alt="Info icon" />
             </button>
           </div>
@@ -114,6 +121,30 @@ function App() {
         </div>
         <h1>Mine opgaver</h1>
       </header>
+      {isOpen && 
+      (<div className="info-screen">
+        <button onClick={toggleInfoScreen} className='close-btn'>
+          <img src={CloseBtn} width={24} height={24} alt="Luk" />
+        </button>
+        <h1>App info</h1>
+        <p>Optimer din dag med denne intuitive to-do app. Organisér opgaver, få påmindelser og øg din produktivitet. Simplificér din hverdag nu.</p>
+        <h3>Sådan virker det:</h3>
+        <ol>
+          <li>Skriv en opgave ind som du skal huske at fuldføre.
+            <ul>
+              <li>Har du skrevet forkert kan du rette opgaven ved at trykke på 'Pen-ikonet'.</li>
+              <li>Her kan du rette til og gemme opgaven ved at trykke 'Gem'.</li>
+            </ul>
+          </li>
+          <li>Når du har gennemført opgaven, kan du trykke på cirklen for at markere den som fuldført.</li>
+          <li>Opgaven bliver streget over og sendt til bunden af dine opgaver.</li>
+          <li>For at slette opgaven helt fra din liste kan du dobbeltklikke på opgaven.</li>
+        </ol>
+        <button className='get-started' onClick={toggleInfoScreen}>
+          Kom igang
+        </button>
+      </div>)
+      }
       <main>
         {isEditing ? (
         <EditTodoForm
