@@ -103,11 +103,22 @@ function App() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    // Prevent scrolling on the entire page when the info screen is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = ''; // Reset overflow style
+      document.documentElement.style.overflow = ''; // Reset overflow style
+    }
+  }, [isOpen]);
+
   function toggleInfoScreen() {
     setIsOpen((isOpen) => !isOpen);
   }
   return (
-    <div className={`App ${isOpen ? 'no-scroll' : ''}`}>
+    <div className='App'>
       <header>
         <div className="header-main">
           <div className="header-logo-btn-container">
