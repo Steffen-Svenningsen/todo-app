@@ -8,6 +8,7 @@ import AddTodoForm from './components/AddTodoForm';
 import EditTodoForm from './components/EditTodoForm';
 import LogoImg from './images/logo.png';
 import DarkMode from "./components/DarkMode";
+import InfoIcon from "./images/info.png"
 
 function App() {
   moment.locale();
@@ -102,7 +103,12 @@ function App() {
     <div className="App">
       <header>
         <div className="header-main">
-          <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
+          <div className="header-logo-btn-container">
+            <img src={LogoImg} width={38} height={38} alt="Simple Todo Logo" />
+            <button>
+              <img src={InfoIcon} width={24} height={24} alt="Info icon" />
+            </button>
+          </div>
           <p className='date'>{date}</p>
           <DarkMode />
         </div>
