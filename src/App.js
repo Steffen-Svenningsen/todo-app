@@ -104,14 +104,25 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Prevent scrolling on the entire page when the info screen is open
+    const handleTouchMove = (event) => {
+      if (isOpen) {
+        event.preventDefault();
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
     } else {
-      document.body.style.overflow = ''; // Reset overflow style
-      document.documentElement.style.overflow = ''; // Reset overflow style
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('touchmove', handleTouchMove);
     }
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+    };
   }, [isOpen]);
 
   function toggleInfoScreen() {
